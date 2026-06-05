@@ -611,7 +611,7 @@ async function boot() {
   });
   
   // ── M3U files এর নাম টা পেস্ট কর ──────────────────────────────
-  const playlists = ['playlist.m3u', 'playlist2.m3u', 'sports.m3u'];
+  const playlists = ['playlist.m3u', 'playlist2.m3u', 'playlist3.m3u'];
   
   const m3uResults = await Promise.allSettled(
     playlists.map(f => loadPlaylist(f))
