@@ -668,7 +668,7 @@ async function boot() {
       log('warn', `❌ ${jsons[i]}: ${res.reason.message}`);
   });
 
-  // ── M3U files এর নাম টা পেস্ট কর ──────────────────────────────
+  // ── M3U files এর ���াম টা পেস্ট কর ──────────────────────────────
   const playlists = ['playlist.m3u', 'playlist2.m3u', 'playlist3.m3u'];
 
   const m3uResults = await Promise.allSettled(
@@ -1181,5 +1181,9 @@ function demoChannels(){return[
 // ═══════════════════════════════════════════
 boot();
 </script>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
