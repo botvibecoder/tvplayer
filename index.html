@@ -1081,11 +1081,18 @@ document.getElementById('pipBtn').addEventListener('click',async()=>{
   const v=document.getElementById('vid');
   try{document.pictureInPictureElement?await document.exitPictureInPicture():(v.readyState>0&&await v.requestPictureInPicture());}catch{toast('PiP not supported in this browser');}
 });
-document.getElementById('fsBtn').addEventListener('click',()=>{
+document.getElementById('fsBtn').addEventListener('click',async()=>{
   const pw=document.getElementById('pw');
-  document.fullscreenElement?document.exitFullscreen():pw.requestFullscreen().catch(()=>toast('Fullscreen unavailable'));
+  if(document.fullscreenElement){
+    await document.exitFullscreen();
+    try{screen.orientation.unlock();}catch(e){}
+  } else {
+    try{
+      await pw.requestFullscreen();
+      if(screen.orientation?.lock) await screen.orientation.lock('landscape');
+    } catch(e){toast('Fullscreen unavailable');}
+  }
 });
-
 // ═══════════════════════════════════════════
 // SEARCH
 // ═══════════════════════════════════════════
